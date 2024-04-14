@@ -1,8 +1,8 @@
 # 사지방 제한 해제 프로그램
 
 ## Supported Platform
-* Windows (x86_64)
-* Linux (x86_64)
+* x86_64 - Windows
+* x86_64 - Linux ( not tested )
 
 > this repo only contains release packed executables
 
