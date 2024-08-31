@@ -4,6 +4,6 @@
 * x86_64 - Windows
 * x86_64 - Linux ( not tested )
 
-> this repo only contains release packed executables
+> Source code will be open-sourced after about a year
 
 [참고한 글](https://codingbot.kr/28)
