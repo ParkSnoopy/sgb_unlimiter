@@ -4,5 +4,6 @@
 * x86_64 - Windows
 > HamoniKR OS test failed
 
-## [Source](https://gitlab.snoo.top/parksnoopyinc/sgb-unlimiter)
-> Server downtime 04:00-09:00 KST(UTC+09:00)
+## Source code is at [Builder Repo](https://github.com/ParkSnoopy/sgb_unlimiter.builder)
+
+This project is archived due to author became unable to test program internally
