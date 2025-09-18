@@ -1,0 +1,37 @@
+[package]
+name = "sgb_unlimiter"
+version = "1.2.1"
+edition = "2021"
+authors = [
+  "ParkSnoopy <sunwoo2539@gmail.com>",
+  "mil-acc-github <milacc0000@gmail.com>"
+]
+license = "GPL-3.0-or-later"
+
+
+[profile.release]
+panic = "abort"
+strip = true
+lto   = true
+
+
+[features]
+noscript = []
+
+
+[dependencies]
+ansi-escapes = "0.2"
+nu-ansi-term = "0.50"
+base116  = { version="0.1", features=["alloc"] }
+ctrlc = "3.5"
+eyre = "0.6"
+log = { version = "0.4", features = ["max_level_trace", "release_max_level_info"] }
+env_logger = "0.11"
+enable-ansi-support = "0.2"
+tasklist = "0.3"
+ntapi    = { version="0.4", features=["user"] }
+winapi   = { version="0.3", features=["processthreadsapi", "winnt", "winbase", "securitybaseapi", "errhandlingapi"] }
+
+[build-dependencies]
+eyre = "0.6"
+winres = "0.1"
