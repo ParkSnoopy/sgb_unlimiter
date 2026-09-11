@@ -54,7 +54,7 @@ impl SuspendState {
         self.fail_suspendprocess += 1;
     }
 
-    pub fn success_suspend_process(&mut self, proc_name: &String) {
+    pub fn success_suspend_process(&mut self, proc_name: &str) {
         self.record.insert(proc_name.to_uppercase());
         self.tried_suspend();
         self.success_suspend += 1;

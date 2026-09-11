@@ -3,7 +3,7 @@ use eyre::Result;
 use std::env;
 
 fn main() -> Result<()> {
-    if let Some(_) = env::var_os("CARGO_FEATURE_NOSCRIPT") {
+    if env::var_os("CARGO_FEATURE_NOSCRIPT").is_some() {
         return Ok(());
     }
 

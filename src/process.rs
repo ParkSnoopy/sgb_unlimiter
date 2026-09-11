@@ -38,16 +38,10 @@ pub fn suspend_process_handle(proc_handle: HANDLE) -> bool {
     debug!("Result = {}", suspend_result);
     debug!("LError = {}", unsafe { GetLastError() });
 
-    match suspend_result {
-        0 => true,
-        _ => match unsafe { GetLastError() } {
-            0 => true,
-            _ => false,
-        },
-    }
+    suspend_result == 0 || unsafe { GetLastError() } == 0
 }
 
-pub fn is_target_process(targets: &Vec<String>, proc_name: &String) -> bool {
+pub fn is_target_process(targets: &[String], proc_name: &str) -> bool {
     for target in targets.iter() {
         if proc_name.contains(target) {
             return true;

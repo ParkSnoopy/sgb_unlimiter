@@ -1,12 +1,15 @@
 [package]
 name = "sgb_unlimiter"
-version = "1.2.1"
-edition = "2021"
+version = "1.2.2"
+edition = "2024"
 authors = [
-  "ParkSnoopy <sunwoo2539@gmail.com>",
-  "mil-acc-github <milacc0000@gmail.com>"
+  "ParkSnoopy <ParkSnoopy@users.noreply.github.com>",
+  "milacc0000 <milacc0000@users.noreply.github.com>"
 ]
 license = "GPL-3.0-or-later"
+
+[lints.cargo]
+non_kebab_case_bins = "allow"
 
 
 [profile.release]

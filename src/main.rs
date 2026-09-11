@@ -43,7 +43,7 @@ fn main() -> eyre::Result<()> {
 
     // Initialize Jobs : Build Target Vector
     let targets = decode::get_prebuilt();
-    debug!("Built Target Vector = {:?}", &targets);
+    debug!("Built Target Vector = {:?}", targets);
 
     // Main Termination Loop
     let estimated_runs = config::SUSPEND_UNTIL / config::SUSPEND_EACH;
@@ -133,10 +133,10 @@ fn cleanup() {
 
 fn iteration_init() {
     print!("{}", ClearScreen,);
-    print!("\n");
+    println!();
 }
 
-fn do_suspend_targets(targets: &Vec<String>) -> state::SuspendState {
+fn do_suspend_targets(targets: &[String]) -> state::SuspendState {
     println!();
     info!("Start scan");
     debug!("");
@@ -159,7 +159,7 @@ fn do_suspend_targets(targets: &Vec<String>) -> state::SuspendState {
         let proc_name = santinize(&proc);
 
         if is_target_process(targets, &proc_name) {
-            debug!("ProcName = {}", &proc_name);
+            debug!("ProcName = {}", proc_name);
 
             if proc.get_user().unwrap_or("nobody".to_string()).as_str() == "access denied:OpenProcess failed" {
                 suspend_state.fail_access_denied();
