@@ -1,5 +1,4 @@
-use std::error;
-use std::fmt;
+use std::{error, fmt};
 
 pub type DecodeResult<T> = std::result::Result<T, DecodeError>;
 

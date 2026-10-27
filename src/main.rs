@@ -7,24 +7,28 @@ mod privilige;
 mod process;
 mod state;
 
-use crate::process::{
-    get_process_handle, is_target_process, process_iter, santinize, suspend_process_handle,
+use std::{
+    sync::{Arc, RwLock},
+    thread::sleep,
+    time::Duration,
 };
 
-use std::sync::{Arc, RwLock};
-use std::thread::sleep;
-use std::time::Duration;
-
-use log::{debug, error, info, trace};
-use log::{Level, LevelFilter};
+use log::{Level, LevelFilter, debug, error, info, trace};
 use nu_ansi_term::Color;
-
 use ansi_escapes::{
     ClearScreen,
     //CursorSavePosition,
     //CursorRestorePosition,
     EnterAlternativeScreen,
     ExitAlternativeScreen,
+};
+
+use crate::process::{
+    get_process_handle,
+    is_target_process,
+    process_iter,
+    santinize,
+    suspend_process_handle,
 };
 
 fn main() -> eyre::Result<()> {
@@ -161,7 +165,9 @@ fn do_suspend_targets(targets: &[String]) -> state::SuspendState {
         if is_target_process(targets, &proc_name) {
             debug!("ProcName = {}", proc_name);
 
-            if proc.get_user().unwrap_or("nobody".to_string()).as_str() == "access denied:OpenProcess failed" {
+            if proc.get_user().unwrap_or("nobody".to_string()).as_str()
+                == "access denied:OpenProcess failed"
+            {
                 suspend_state.fail_access_denied();
                 error!("Access Denied Error");
                 continue;

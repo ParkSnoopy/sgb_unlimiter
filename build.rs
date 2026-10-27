@@ -1,6 +1,6 @@
-use eyre::Result;
-
 use std::env;
+
+use eyre::Result;
 
 fn main() -> Result<()> {
     if env::var_os("CARGO_FEATURE_NOSCRIPT").is_some() {

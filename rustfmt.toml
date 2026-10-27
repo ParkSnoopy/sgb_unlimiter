@@ -1,0 +1,6 @@
+reorder_imports = false
+force_multiline_blocks = true
+imports_layout = "HorizontalVertical"
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+blank_lines_upper_bound = 3

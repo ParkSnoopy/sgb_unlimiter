@@ -1,21 +1,26 @@
 use ntapi::ntpsapi::NtSuspendProcess;
-use winapi::shared::minwindef::DWORD;
-use winapi::shared::ntdef::{NTSTATUS, NULL};
-use winapi::um::errhandlingapi::GetLastError;
-use winapi::um::processthreadsapi::OpenProcess;
-use winapi::um::winnt::{HANDLE, PROCESS_ALL_ACCESS};
-
+use winapi::{
+    shared::{
+        minwindef::DWORD,
+        ntdef::{NTSTATUS, NULL},
+    },
+    um::{
+        errhandlingapi::GetLastError,
+        processthreadsapi::OpenProcess,
+        winnt::{HANDLE, PROCESS_ALL_ACCESS},
+    },
+};
 use tasklist::{Process, Tasklist};
+use log::debug;
 
 use crate::config::SUSPEND_ATTEMPT;
-
-use log::debug;
 
 pub fn process_iter() -> impl Iterator<Item = Process> {
     {
         Tasklist::new()
         // println!( "{} {} {}", i.get_pid(), i.get_pname(), i.get_user() );
-    }.unwrap()
+    }
+    .unwrap()
 }
 
 pub fn get_process_handle(pid: u32) -> Result<HANDLE, DWORD> {

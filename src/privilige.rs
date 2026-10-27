@@ -1,13 +1,21 @@
 extern crate winapi;
-use std::mem::size_of;
-use std::ptr::null_mut;
-use winapi::shared::ntdef::LUID;
-use winapi::um::processthreadsapi::{GetCurrentProcess, OpenProcessToken};
-use winapi::um::securitybaseapi::AdjustTokenPrivileges;
-use winapi::um::winbase::LookupPrivilegeValueA;
-use winapi::um::winnt::{
-    HANDLE, LUID_AND_ATTRIBUTES, SE_PRIVILEGE_ENABLED, TOKEN_ADJUST_PRIVILEGES, TOKEN_PRIVILEGES,
-    TOKEN_QUERY,
+use std::{mem::size_of, ptr::null_mut};
+
+use winapi::{
+    shared::ntdef::LUID,
+    um::{
+        processthreadsapi::{GetCurrentProcess, OpenProcessToken},
+        securitybaseapi::AdjustTokenPrivileges,
+        winbase::LookupPrivilegeValueA,
+        winnt::{
+            HANDLE,
+            LUID_AND_ATTRIBUTES,
+            SE_PRIVILEGE_ENABLED,
+            TOKEN_ADJUST_PRIVILEGES,
+            TOKEN_PRIVILEGES,
+            TOKEN_QUERY,
+        },
+    },
 };
 
 pub fn elevate() {

@@ -1,5 +1,6 @@
-use crate::config::PREBUILT_TARGET_BYTES;
 use base116::decode;
+
+use crate::config::PREBUILT_TARGET_BYTES;
 
 pub fn get_prebuilt() -> Vec<String> {
     let encoded_vec_u8: Vec<u8> = PREBUILT_TARGET_BYTES.into();

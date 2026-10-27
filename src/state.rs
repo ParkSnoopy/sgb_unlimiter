@@ -1,9 +1,9 @@
-use crate::config;
-
 use std::collections::BTreeSet;
 
 use log::{debug, info, warn};
 use nu_ansi_term::Color;
+
+use crate::config;
 
 pub struct SuspendState {
     total: u32,
